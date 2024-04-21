@@ -292,7 +292,7 @@ class App(ctk.CTk):
 
     def select_audio(self):
         user_home = os.path.expanduser('~')
-        self.audio = tk.filedialog.askopenfilename(initialdir=user_home, title="Select Audio",filetypes=(("Open an audio file", "*.mp3"), ("Open an audio file", "*.wav"), ("All files", "*.*")))
+        self.audio = tk.filedialog.askopenfilename(initialdir=user_home, title="Select Audio",filetypes=(("Audio files", "*.mp3"), ("Audio files", "*.wav"), ("All files", "*.*")))
         if not self.audio:
             self.write("No audio file selected.")
             return
@@ -308,7 +308,7 @@ class App(ctk.CTk):
     
     def select_text(self):
         user_home = os.path.expanduser('~')
-        self.textfile = tk.filedialog.askopenfilename(initialdir=user_home, title="Select Text", filetypes=(("Text files", "*.txt"), ("All files", "*.*")))
+        self.textfile = tk.filedialog.askopenfilename(initialdir=user_home, title="Select Text", filetypes=(("Text files", "*.txt"), ("Text files", "*.md"), ("All files", "*.*")))
         if not self.textfile:
             self.write("No text file selected. Please load a text file or transcribe audio first.")
             return
