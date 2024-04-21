@@ -64,7 +64,7 @@ The application generates three types of files:
 - **filename_Transcript.txt**: The raw transcript of the recorded or loaded audio.
 - **filename_LLM_name_Summary.txt**: A summary of the transcript. 
 
-All files are saved in the `ScrAIbe_files` directory in your home folder.
+All files are saved in the `ScrAIbe_files` directory in your home/user folder.
 
 ## License
 
