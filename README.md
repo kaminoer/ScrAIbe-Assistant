@@ -23,7 +23,7 @@ To start using ScrAIbe Assistant, follow these steps to set up the environment a
 2. **Install and Run Ollama:**
    - Download and install [Ollama](https://ollama.com/download) for your operating system.
    - Start Ollama using its GUI or via command line (`ollama serve`).
-   - Pull an LLM of your choice from the [Ollama library](https://ollama.com/library). Consider your machine's specifications when choosing an LLM, especially if you lack a dedicated GPU or have limited RAM.
+   - Pull an LLM (`ollama pull <model_name>`) of your choice from the [Ollama library](https://ollama.com/library). Consider your machine's specifications when choosing an LLM, especially if you lack a dedicated GPU or have limited RAM.
 
 3. **Install FFmpeg:**
    - FFmpeg is essential for handling media files. Install it using the package manager suitable for your OS:
