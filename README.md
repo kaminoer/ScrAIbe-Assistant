@@ -53,7 +53,7 @@ To launch the application, simply run:
 python scrAIbe_assistant.py
 ```
 
-This application allows you to record audio, transcribe it using Whisper, and summarize the transcription with an LLM of your choice via Ollama. You can either record directly within the app or load existing audio and text files from your machine for processing. Control over audio sources, LLMs, Whisper models, and LLM temperature settings are provided to tailor the experience to your needs.
+This application allows you to record audio, transcribe it using Whisper, and summarize the transcription with an LLM of your choice via Ollama. You can either record directly within the app or load existing audio and text files from your machine for processing. Control over audio sources, LLMs, Whisper models, and LLM temperature settings are provided to tailor the experience to your needs. All audio and text processing is performed locally on your machine. Once you've set everything up, you can use this tool offline.
 
 Note: The first use of a Whisper model involves downloading it, which may take a few minutes depending on your internet connection and the model size. Subsequent uses will be significantly faster.
 
