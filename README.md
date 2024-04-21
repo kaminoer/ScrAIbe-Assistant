@@ -68,7 +68,7 @@ All files are saved in the `ScrAIbe_files` directory in your home folder.
 
 ## License
 
-- Whisper's model weights are released under the MIT License. See [LICENSE](https://github.com/openai/whisper/blob/main/LICENSE) for details.
+- Whisper models are released under the MIT License. See [LICENSE](https://github.com/openai/whisper/blob/main/LICENSE) for details.
 - Ollama is also under the MIT license. See [LICENSE](https://github.com/ollama/ollama/blob/main/LICENSE) for details.
 - ScrAIbe Assistant is released under the MIT license.
 
@@ -78,6 +78,10 @@ All files are saved in the `ScrAIbe_files` directory in your home folder.
 - Add functionality to halt transcription/summarization processes.
 - Overhaul file loading and handling to clean up the existing codebase.
 - Enhance the user interface for better usability.
+- Implement translation capabilities for transcriptions and summaries.
+- Enable customization of the LLM system message.
+- Add audio configuration options.
+- Support keeping both LLM and Whisper models in memory for high-performance systems with lots of RAM/VRAM.
 
 ## Acknowledgements
 
