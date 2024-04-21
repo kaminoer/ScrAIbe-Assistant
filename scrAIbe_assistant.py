@@ -140,7 +140,7 @@ class App(ctk.CTk):
         screen_height = self.winfo_screenheight()
 
         # Size of the window
-        width = 900
+        width = 1350
         height = 700
 
         # Calculate x and y coordinates
