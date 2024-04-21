@@ -1,7 +1,7 @@
 # ScrAIbe Assistant
 ![Cover Photo](/misc/cover.png)
 
-ScrAIbe Assistant is a robust application designed to leverage [Whisper](https://github.com/openai/whisper) for precise audio processing and local LLMs via [Ollama](https://ollama.com/) for efficient summarization. This tool is perfect for tasks such as note-taking, research, and content creation, offering a secure environment where no data—be it text, audio, or otherwise—leaves your local machine.
+ScrAIbe Assistant is a robust application designed to leverage [Whisper](https://github.com/openai/whisper) for precise audio processing and local LLMs via [Ollama](https://ollama.com/) for efficient summarization. This tool is perfect for tasks such as taking notes at team meetings or lectures, offering a secure environment where no data—be it text, audio, or otherwise—leaves your local machine.
 
 For optimal performance, it is recommended to have at least 16 GB of RAM. For enhanced processing capabilities, using an NVIDIA GPU with CUDA support or a MacBook with Metal support is advisable.
 
