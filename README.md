@@ -1,48 +1,27 @@
-# Whisper2Summarize
-[\[Google Colab\]](https://colab.research.google.com/github/AndreDalwin/Whisper2Summarize/blob/main/Whisper2Summarize_Colab_Edition.ipynb) 
+# ScrAIbe Assistant
 ![Cover Photo](/misc/cover.png)
-Whisper2Summarize is an application that uses [Whisper](https://github.com/openai/whisper) for audio processing and [GPT](https://platform.openai.com/docs/api-reference) for summarization. It generates summaries of audio transcripts accurately, making it ideal for a variety of use cases such as note-taking, research, and content creation.
-
-## Quick Start with Google Colab
-
-To get started with Google Colab, you may check out the [Whisper2Summarize Notebook](https://colab.research.google.com/github/AndreDalwin/Whisper2Summarize/blob/main/Whisper2Summarize_Colab_Edition.ipynb) that contains a modified version of the code that works in Google Colab.
-
-Just add in your API Key, audio file to the session storage, and select the Whisper Model to use. (I don't suggest using medium or large as it will be incredibly slow.)
+ScrAIbe Assistant is an application that uses [Whisper](https://github.com/openai/whisper) for audio processing and local LLMs via [Ollama](https://ollama.com/) for summarization. It can record audio and generate summaries of audio transcripts accurately, making it ideal for a variety of use cases such as note-taking, research, and content creation. There are many similar tools available these days, but most of them send your data to their respective service providers. With ScrAIbe Assisstant, no text, audio, or any other data leave your environment. Everything is hosted locally on your machine. For the application to run smoothly, at least 16 GB of RAM is recommended. For the best experience, an NVIDIA GPU with CUDA support or a MacBook with Metal support are recommended.
 
 ## Quick Start with GUI
 
-To immediately get started with this program, you should clone this repository and install the requirements.
+To immediately get started with this program, clone this repository, install the requirements, install Ollama, and pull an LLM:
 
+1. Clone this repo and install requirements (Python venv is recommended):
+   It should work out of the box on Windows systems with CUDA. You may need to edit the pytorch version in requirements.txt if you don't want to use pytorch with CUDA or to install [pytorch compatible with your OS](https://pytorch.org/get-started/locally/). ScrAIbe Assistant should support MPS on macOS but I haven't tested it yet.
+   **NOTE:** To install Whisper, you might need `rust` installed as well if pre-built wheel is not available for your platform: `pip install setuptools-rust`.
+   
 ```shell
-git clone https://github.com/AndreDalwin/Whisper2Summarize.git
-cd Whisper2Summarize
+git clone git clone https://github.com/kaminoer/ScrAIbe-Assistant.git
+cd ScrAIbe-Assistant
 pip install -r requirements.txt
-python w2sgui.py
+python scrAIbe_assistant.py
 ```
 
-## Building from Source
-
-
-I used Python 3.10.11 to build this application, but OpenAI's Whisper and GPT is expected to be compatible with Python 3.8-3.10. The code depends on a few Python packages, notably OpenAI's Whisper and GPT, their dependencies, a torch verison that supports CUDA, and rust. You have the option to install all the requirements by cloning the repository then typing:
-
-```
-pip install -r requirements.txt
-```
-
-**If you have an NVIDIA GPU, follow this step. Otherwise skip it.**
-You want to install a different version of torch that supports CUDA.
-
-```
-pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu116
-```
-
-You will need to install OpenAI's Whisper and GPT.
-
-```
-pip install -U openai-whisper openai
-```
-
-Additionally, it also requires the command-line tool `ffmpeg` to be installed on your system, which is available from most package managers:
+2. Next, install [Ollama for your OS](https://ollama.com/download).
+3. Start Ollama (either run the GUI or `ollama serve` in cmd, PowerShell or Terminal).
+4. Pull an LLM of your choice. You can find available LLMs in the [Ollama library](https://ollama.com/library). Once you find a model you like, run `ollama pull <model_name>` in cmd, PowerShell or Terminal.
+   When choosing an LLM, be mindful of your machine specs. If you have no dedicated GPU and/or 16 GB of RAM or less, look for 7B quantized models. The bigger the model's parameters value, the more powerful machine is required.
+5. If you don't have it, install `ffmpeg`. It's available from most package managers:
 
 ```
 # on Ubuntu or Debian
@@ -61,60 +40,36 @@ choco install ffmpeg
 scoop install ffmpeg
 ```
 
-**NOTE:** To install Whisper, might need `rust` install as well in case you don't have pre-built wheel for your platform.
+I used Python 3.12.3 to build this application.
 
-```
-pip install setuptools-rust
-```
+## Use ScrAIbe-Assistant
 
-Lastly, you need to clone this repository.
-
-```
-git clone https://github.com/AndreDalwin/Whisper2Summarize.git
-cd Whisper2Summarize
-```
-
-## Using the Program
-
-Ensure you create a `.env` file in the directory containing your OpenAI API Key, you will need it to run this program.
-
-### Command Line Usage
-
-The following command will transcribe audio files, using Whisper's `medium` model:
+To start the app, run:
 
 ```shell
-python whisper2summarize.py audio.mp3 --model medium
+python scrAIbe_assistant.py
 ```
 
-The default setting (which selects Whisper's `base` model) works well with CPU for transcribing English. I recommend using other models when trying out multilingual audio snippets.
+This application lets you record audio, transcribe it with Whisper and finally summarize the transcription with an LLM of your choice via Ollama. You can either record audio in the application to process it or load files (audio and text) from your machine to transcribe or summarize. No text, audio, or any other data leave your environment. Everything is hosted locally on your machine.
 
-Here is the full list of available Whisper models:
+You can select an audio source, load various LLMs and Whisper models, and control the LLM temperature to customize your experience.
 
-```
-tiny, small, base, medium, large-v2
-```
+Note that when you use a Whisper model for the first time, it has to be downloaded first. Depending on the model size and your connection, allow a few minutes for the model to download. Subsequent uses of the model should be much quicker.
 
-To see the requirements to run these different models, check out [OpenAI's Whisper Github](https://github.com/openai/whisper#available-models-and-languages) to learn more.
+### Output files
 
-### GUI Usage
-
-You may start the GUI which allows you to select the audio file, model select, and paste in your OpenAI API Key.
-
-```shell
-python w2sgui.py
-```
-
-### Results
-
-Running the program will output 2 files. **Transcript.txt** which is the raw transcript of the audio recording, and **Summary.txt** which is the summarized short form of the transcript.
+Depending on your use case, running the program will output 3 files. **Recording_date_and_time.mp3** which is your recording, **_Transcript.txt** which is the raw transcript of the audio recording or a loaded audio file, and **Summary.txt** which is the summary of the transcript. All files are saved to ScrAIbe_files in your home directory.
 
 ## License
 
 Whisper's model weights are released under the MIT License. See [LICENSE](https://github.com/openai/whisper/blob/main/LICENSE) for further details.
 
-Feel free to fork this to experiment this yourself. I actually made this for my girlfriend since her class recordings are really long.
+Ollama is released under MIT license. See [LICENSE](https://github.com/ollama/ollama/blob/main/LICENSE) for further details.
+
+ScrAIbe Assistant is released under MIT license.
 
 ## Future Plans
-- Implement a "Translate" feature to translate transcripts to a different language
-- Implement an option to change OpenAI model (gpt-3.5-turbo, text-davinci-003, gpt-4)
-- Print out possible errors in the GUI terminal when something bad happens
+- Replace drop-in Ollama with native Ollama calls.
+- Add an option to stop transcribing/summarizing when it's in progress.
+- Rewrite file loading and handling. Code is a mess...
+- UI improvements
