@@ -85,4 +85,4 @@ All files are saved in the `ScrAIbe_files` directory in your home folder.
 
 ## Acknowledgements
 
-This project was inspired by and forked from [Andre Dalwin's](https://github.com/AndreDalwin) [Whisper2Summarize](https://github.com/AndreDalwin/Whisper2Summarize).
+This project was inspired by and is a fork of [Andre Dalwin's](https://github.com/AndreDalwin) [Whisper2Summarize](https://github.com/AndreDalwin/Whisper2Summarize).
